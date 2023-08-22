@@ -27,17 +27,17 @@ function useStateV1(initValue) {
 // useState V2
 
 function useStateV2(initState) {
+    let internalValue = initState
+    const domUpdate = () => {
+        console.log('Dom Updated')
+    }
     return {
-        val: initState,
         get value() {
-            return this.val
+            return internalValue
         },
         set value(newVal) {
-            this.val = newVal
-            this.domUpdate()
-        },
-        domUpdate() {
-            console.log('Dom Updated')
+        internalValue = newVal
+            domUpdate()
         }
     }
 }
