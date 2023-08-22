@@ -1,13 +1,17 @@
 
 function useState(initValue) {
-    let value = {
+    let internalValue = {
         value: initValue
     }
+    const updateDom = () => {
+        console.log('DOM Updated!')
+    }
     const updateValue = function (val) {
-        value.value = val
+        internalValue.value = val
+        updateDom()
     }
     return [
-        value,
+        internalValue,
         updateValue
     ]
 }
